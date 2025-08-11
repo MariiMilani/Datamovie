@@ -14,3 +14,7 @@ spring:
 
   flyway:
     enabled: true
+
+datamovie:
+  security:
+    secret: "malfeito-feito"
