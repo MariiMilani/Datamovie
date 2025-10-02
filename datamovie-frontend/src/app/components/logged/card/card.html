@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    @if (isTop10) {
+      <div class="top10">Top 10</div>
+    } @else {
+      <div class="regular-card"></div>
+    }
+    <h4 class="card-title">{{title}}</h4>
+    <p class="card-text">{{description}}</p>
+    <div class="card-definition">
+      <span class="card-definition-duration">🕓 {{ duration }}</span>
+      <span class="card-definition-age-rating">🔞 {{ageRating}}</span>
+      <span class="card-definition-approval-rating">🎬 {{ approvalRating }}% Aprovação</span>
+    </div>
+    <div class="streaming-container">
+      <div class="streaming-box">
+        <img [src]="streamingLogo" alt="Logo" class="logo-streaming">
+      </div>
+    </div>
+  </div>
+</div>

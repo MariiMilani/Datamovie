@@ -1,0 +1,104 @@
+<div id="home-page-content">
+  <div id="header-container">
+    <app-header/>
+    <div>
+      <a [routerLink]="'/create-movie'" class="btn btn-danger">
+        Cadastrar filme
+      </a>
+    </div>
+  </div>
+  <div id="home-container" class="mb-5">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <app-card
+          title="O Poderoso Chefão"
+          description="Dom Corleone, chefe da máfia, precisa passar o legado para seu filho Michael, que reluta em assumir os negócios da família."
+          duration="1:30h"
+          ageRating="Somente +18"
+          [approvalRating]="67"
+          streamingLogo="images/streaming/apple.png"
+          [isTop10]=true
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="Pulp Fiction: Tempo de Violência"
+          description="Histórias de criminosos, boxeadores e gângsters se entrelaçam em Los Angeles de forma violenta e não linear."
+          duration="2:34h"
+          ageRating="Somente +18"
+          [approvalRating]=92
+          streamingLogo="images/streaming/prime-video.png"
+          [isTop10]=true
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="O Senhor dos Anéis: A Sociedade do Anel"
+          description="Um hobbit recebe a missão de destruir um anel poderoso e salva a Terra Média das trevas."
+          duration="2:50h"
+          ageRating="Livre"
+          [approvalRating]=99
+          streamingLogo="images/streaming/prime-video.png"
+          [isTop10]=true
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="Matrix"
+          description="Um hacker descobre que a realidade é uma simulação e lidera uma rebelião contra máquinas inteligentes."
+          duration="2:16h"
+          ageRating="Somente +16"
+          [approvalRating]=88
+          streamingLogo="images/streaming/netflix.png"
+          [isTop10]=true
+        ></app-card>
+      </div>
+
+      <div class="col">
+        <app-card
+          title="O Poderoso Chefão"
+          description="Dom Corleone, chefe da máfia, precisa passar o legado para seu filho Michael, que reluta em assumir os negócios da família."
+          duration="1:30h"
+          ageRating="Somente +18"
+          [approvalRating]="67"
+          streamingLogo="images/streaming/prime-video.png"
+          [isTop10]=false
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="Matrix"
+          description="Um hacker descobre que a realidade é uma simulação e lidera uma rebelião contra máquinas inteligentes."
+          duration="2:16h"
+          ageRating="Somente +16"
+          [approvalRating]=88
+          streamingLogo="images/streaming/netflix.png"
+          [isTop10]=false
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="O Senhor dos Anéis: A Sociedade do Anel"
+          description="Um hobbit recebe a missão de destruir um anel poderoso e salva a Terra Média das trevas."
+          duration="2:50h"
+          ageRating="Livre"
+          [approvalRating]=99
+          streamingLogo="images/streaming/prime-video.png"
+          [isTop10]=false
+        ></app-card>
+      </div>
+      <div class="col">
+        <app-card
+          title="Clube da Luta"
+          description="Um homem insone forma um clube de combate underground que se transforma em um movimento anti-social."
+          duration="2:19h"
+          ageRating="Somente +18"
+          [approvalRating]=79
+          streamingLogo="images/streaming/apple.png"
+          [isTop10]=false
+        ></app-card>
+      </div>
+
+    </div>
+  </div>
+</div>
