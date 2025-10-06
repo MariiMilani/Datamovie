@@ -1,7 +1,7 @@
 <div id="header">
   <div class="d-flex align-items-center nav-logo-container">
     <div class="logo">DataMovie</div>
-    <nav class="main-nav">
+    <nav class="main-nav" [class.active]="isMenuOpen">
       <ul class="nav">
         <li class="nav-item">
           <a href="#" class="nav-link">Início</a>
@@ -19,13 +19,20 @@
           <a href="#" class="nav-link">Novidades</a>
         </li>
       </ul>
-
     </nav>
   </div>
-  <div class="d-flex align-items-center input-profile-container">
+
+  <div class="d-flex align-items-center input-profile-container gap-2">
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <i class="bi bi-list">
+      </i>
+    </button>
+
     <div class="search-box">
-      <input type="text" class="form-control" placeholder="🔍 Search">
+      <i class="bi bi-search"></i>
+      <input type="text" class="form-control" placeholder=" Search">
     </div>
+
     <div class="profile">
       <img src="/images/profile.png" alt="perfil" class="profile-img">
     </div>

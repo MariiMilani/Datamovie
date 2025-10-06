@@ -1,0 +1,9 @@
+.sticky-header-offset {
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .sticky-header-offset {
+    padding-top: 10px;
+  }
+}
