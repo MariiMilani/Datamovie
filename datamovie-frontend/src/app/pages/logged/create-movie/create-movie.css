@@ -148,10 +148,85 @@ a {
   align-items: center;
 }
 
-@media (max-width: 600px) {
-  .registration-box {
-    width: 300px;
-    padding: 50px !important;
+@media screen and (max-width: 1024px) {
+
+  #create-movie-container{
+    height: 84%;
+    align-items: center;
+  }
+
+  .registration-box{
+    width: 90%;
+    max-width: 400px;
+    padding: 0 20px !important;
     border-radius: 20px;
+  }
+
+  .form-item{
+    width: 100%;
+  }
+
+  .form-control, .form-select{
+    font-size: 1rem;
+  }
+
+  .custom-button{
+    width: 80% !important;
+    font-size: 1.2rem;
+  }
+
+  .text-white{
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  #header {
+    height: 16%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo {
+    width: auto;
+    font-size: 1.5rem;
+    height: 40px;
+  }
+
+  #create-movie-container{
+    height: 84%;
+    align-items: center;
+  }
+
+  .form-container:after{
+    display: flex;
+  }
+
+  .registration-box{
+    width: 90%;
+    max-width: 400px;
+    padding: 0 20px !important;
+    border-radius: 20px;
+  }
+
+  h1{
+    font-size: 1.2rem;
+  }
+
+  .form-item{
+    width: 100%;
+  }
+
+  .form-control, .form-select{
+    font-size: 1rem;
+  }
+
+  .custom-button{
+    width: 80% !important;
+    font-size: 1.2rem;
+  }
+
+  .text-white{
+    height: 100px;
   }
 }
