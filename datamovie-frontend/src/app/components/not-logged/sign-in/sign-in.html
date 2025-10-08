@@ -3,25 +3,47 @@
     <div class="login-box p-4">
       <h1 class="mb-4">Entre na sua conta</h1>
 
-      <form>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
         <div class="mb-3">
-          <input type="text"
-                 class="form-control custom-input"
-                 placeholder="E-mail ou número de telefone"
-                 type="email"
+          <input type="email"
                  id="email"
+                 class="form-control custom-input"
+                 placeholder="E-mail"
                  name="email"
-                 user="user.email"
-          >
+                 [(ngModel)]="user.email"
+                 required
+                 email
+                 #email="ngModel">
+          @if (email.invalid && (email.dirty || email.touched)) {
+            <div class="error-message">
+              @if (email.errors?.['required']) {
+                <div>Email é obrigatório.</div>
+              }
+              @if (email.errors?.['email']) {
+                <div>Email inválido.</div>
+              }
+            </div>
+          }
+          <div class="mb-3"></div>
 
           <div class="mb-3">
             <input
-              class="form-control custom-input"
-              placeholder="Sua senha" type="password"
+              type="password"
               id="password"
+              class="form-control custom-input"
+              placeholder="Sua senha"
               name="password"
-              user="user.password"
-            >
+              [(ngModel)]="user.password"
+              required
+              #password="ngModel">
+            @if (password.invalid && (password.dirty || password.touched)) {
+              <div class="error-message">
+                @if (password.errors?.['required']) {
+                  <div>Senha é obrigatória.</div>
+                }
+              </div>
+            }
+
           </div>
 
 
