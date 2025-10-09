@@ -43,9 +43,11 @@
                 }
               </div>
             }
-
           </div>
 
+          @if (errorMessage){
+            <div class="error-message">{{errorMessage}}</div>
+          }
 
           <button type="submit" class="btn btn-danger w-100 custom-button mb-3">
             Entrar na conta

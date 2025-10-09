@@ -16,6 +16,8 @@ export class SignIn {
     password: '',
   };
 
+  errorMessage: string = '';
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -33,7 +35,7 @@ export class SignIn {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        console.log('Erro no login: ', error);
+        this.errorMessage = error.error
       }
     });
   }

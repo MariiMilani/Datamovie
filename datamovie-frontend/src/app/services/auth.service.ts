@@ -13,6 +13,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(user: User) : Observable<UserResponse> {
-    return this.http.post<UserResponse>(`${this.apiUrl}/auth/login`, user);
+    return this.http.post<UserResponse>(`${this.apiUrl}/datamovie/auth/login`, user);
   }
 }
