@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, Observable, of} from 'rxjs';
-import {User, UserResponse} from '../interfaces/user.interface';
+import {User, UserRegister, UserResponse} from '../interfaces/user.interface';
 import {environment} from '../../environments/enviroment.development';
 
 @Injectable({
@@ -15,6 +15,10 @@ export class AuthService {
 
   login(user: User): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${this.apiUrl}/datamovie/auth/login`, user);
+  }
+
+  register(user: UserRegister): Observable<UserResponse> {
+    return this.http.post<UserResponse>(`${this.apiUrl}/datamovie/auth/register`, user);
   }
 
   validateToken(): Observable<boolean> {

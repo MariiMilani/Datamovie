@@ -71,6 +71,12 @@ h1 {
   margin-top: 0.25rem;
 }
 
+.success-message {
+  color: #22b622;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
 @media (max-width: 600px) {
   .login-box {
     width: 300px;

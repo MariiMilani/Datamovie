@@ -1,40 +1,92 @@
 <div id="sign-up-container" class="container" xmlns="http://www.w3.org/1999/html">
   <div class="row justify-content-center">
     <div class="registration-box p-4">
-      <h1 class="mb-4">Efetuar cadastro</h1>
+      <h1 class="mb-4">Cadastre-se</h1>
 
-      <form>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
         <div class="mb-3">
           <input type="text"
+                 id="name"
                  class="form-control custom-input"
                  placeholder="Seu nome completo"
-          >
-
-          <div class="mb-3">
-            <input type="email"
-                   class="form-control custom-input"
-                   placeholder="Seu melhor e-mail"
-            >
-
-            <div class="mb-3">
-              <input
-                class="form-control custom-input"
-                placeholder="Sua senha" type="password"
-              >
+                 name="name"
+                 [(ngModel)]="user.name"
+                 required
+                 minlength="3"
+                 #name="ngModel">
+          @if (name.invalid && (name.dirty || name.touched)) {
+            <div class="error-message">
+              @if (name.errors?.['required']) {
+                <div>Nome é obrigatório.</div>
+              }
+              @if (name.errors?.[`minlength`]) {
+                <div>Nome deve ter no mínimo 3 caracteres.</div>
+              }
             </div>
+          }
+        </div>
 
-
-            <button type="submit" class="btn btn-danger w-100 custom-button mb-3">
-              Cadastrar-se
-            </button>
-
-            <div class="text-center old-here">
-              <span class="text-white">Já tem uma conta?</span>
-              <a  [routerLink]="'/login'" class="text-danger text-decoration-none ms-2">
-                Faça Login
-              </a>
+        <div class="mb-3">
+          <input type="email"
+                 id="email"
+                 class="form-control custom-input"
+                 placeholder="Seu melhor e-mail"
+                 name="email"
+                 [(ngModel)]="user.email"
+                 required
+                 email
+                 #email="ngModel">
+          @if (email.invalid && (email.dirty || email.touched)) {
+            <div class="error-message">
+              @if (email.errors?.['required']) {
+                <div>Email é obrigatório.</div>
+              }
+              @if (email.errors?.['email']) {
+                <div>Email inválido.</div>
+              }
             </div>
-          </div>
+          }
+
+        </div>
+
+
+        <div class="mb-3">
+          <input
+            type="password"
+            id="password"
+            class="form-control custom-input"
+            placeholder="Sua senha"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+            #password="ngModel">
+          @if (password.invalid && (password.dirty || password.touched)) {
+            <div class="error-message">
+              @if (password.errors?.['required']) {
+                <div>Senha é obrigatória.</div>
+              }
+            </div>
+          }
+        </div>
+
+        @if (errorMessage) {
+          <div class="error-message">{{ errorMessage }}</div>
+        }
+
+        @if (successMessage) {
+          <div class="success-message">{{ successMessage }}</div>
+        }
+
+
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-danger w-100 custom-button mb-3">
+          Criar conta
+        </button>
+
+        <div class="text-center old-here">
+          <span class="text-white">Já tem uma conta?</span>
+          <a [routerLink]="'/login'" class="text-danger text-decoration-none ms-2">
+            Faça Login
+          </a>
         </div>
       </form>
     </div>
