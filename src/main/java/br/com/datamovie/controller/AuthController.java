@@ -16,10 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("datamovie/auth")
@@ -30,8 +27,13 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
 
+    @RequestMapping(value = "/validate", method = RequestMethod.HEAD)
+    public ResponseEntity<Void> validateToken() {
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(@RequestBody UserRequest userRequest){
+    public ResponseEntity<UserResponse> register(@RequestBody UserRequest userRequest) {
         User savedUser = userService.save(UserMapper.toUser(userRequest));
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(UserMapper.toUserResponse(savedUser));
@@ -39,7 +41,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         try {
             UsernamePasswordAuthenticationToken userAndPass = new UsernamePasswordAuthenticationToken(loginRequest.email(), loginRequest.password());
             Authentication authenticate = authenticationManager.authenticate(userAndPass);
@@ -50,7 +52,7 @@ public class AuthController {
 
             return ResponseEntity.ok(new LoginResponse(token));
 
-        } catch (BadCredentialsException exception){
+        } catch (BadCredentialsException exception) {
             throw new UsernameOrPasswordInvalidException("Invalid username or password");
         }
     }

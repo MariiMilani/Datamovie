@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/datamovie/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/datamovie/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.HEAD,"/datamovie/auth/validate").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/swagger/**").permitAll()
                         .anyRequest().authenticated()

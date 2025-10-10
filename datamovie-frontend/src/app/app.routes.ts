@@ -3,11 +3,13 @@ import {Login} from './pages/not-logged/login/login';
 import {Home} from './pages/logged/home/home';
 import {Registration} from './pages/not-logged/registration/registration';
 import {CreateMovie} from './pages/logged/create-movie/create-movie';
+import {authGuard} from './guards/auth.guard'
 
 export const routes: Routes = [
   {
     path: '',
     component: Home,
+    canActivate: [authGuard]
   },
   {
     path: 'login',
@@ -19,6 +21,7 @@ export const routes: Routes = [
   },
   {
     path: 'create-movie',
-    component: CreateMovie
+    component: CreateMovie,
+    canActivate: [authGuard]
   }
 ];
