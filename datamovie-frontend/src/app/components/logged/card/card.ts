@@ -9,9 +9,8 @@ import {booleanAttribute, Component, Input} from '@angular/core';
 export class Card {
   @Input() title: string = '';
   @Input() description: string = '';
-  @Input() duration: string = '';
-  @Input() ageRating: string = '';
-  @Input() approvalRating: number = 0;
+  @Input() releaseDate: string = '';
+  @Input() rating: number = 0;
   @Input() streamingLogo: string = '';
   @Input({transform: booleanAttribute}) isTop10: boolean = false;
 }

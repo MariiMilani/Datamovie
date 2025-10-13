@@ -1,9 +1,12 @@
 <div id="home-page-content">
   <div id="header-container">
     <app-header/>
-    <div>
+    <div class="d-flex justify-content-between">
       <a [routerLink]="'/create-movie'" class="btn btn-danger">
-        Cadastrar filme
+        Create new film
+      </a>
+      <a class="btn btn-dark" href="javascript:void(0)" (click)="logout()">
+        Logout
       </a>
     </div>
   </div>
@@ -14,11 +17,10 @@
           <app-card
             [title]="movie.title"
             [description]="movie.description"
-            [duration]="movie.duration"
-            [ageRating]="movie.ageRating"
-            [approvalRating]="movie.approvalRating"
-            [streamingLogo]="movie.streamingLogo"
-            [isTop10]="movie.isTop10"
+            [releaseDate]="movie.releaseDate"
+            [rating]="getApprovalRating(movie.rating)"
+            [streamingLogo]="getLogo(movie.streamings)"
+            [isTop10]="getTop10(movie.rating)"
           ></app-card>
           </div>
         }

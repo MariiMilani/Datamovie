@@ -5,12 +5,11 @@
     } @else {
       <div class="regular-card"></div>
     }
-    <h4 class="card-title">{{title}}</h4>
-    <p class="card-text">{{description}}</p>
+    <h4 class="card-title">{{ title }}</h4>
+    <p class="card-text">{{ description }}</p>
     <div class="card-definition">
-      <span class="card-definition-duration">🕓 {{ duration }}</span>
-      <span class="card-definition-age-rating">🔞 {{ageRating}}</span>
-      <span class="card-definition-approval-rating">🎬 {{ approvalRating }}% Aprovação</span>
+      <span class="card-definition-duration">📅 Release in {{ releaseDate }}</span>
+      <span class="card-definition-approval-rating">🎬 {{ rating }}% Approval</span>
     </div>
     <div class="streaming-container">
       <div class="streaming-box">
