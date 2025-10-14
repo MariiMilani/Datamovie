@@ -13,7 +13,7 @@ export interface Movie {
   title: string;
   description: string;
   releaseDate: string;
-  rating: number;
+  rating: number | null;
   categories: Category[];
-  streamings: Streaming[];
+  streaming: Streaming[];
 }

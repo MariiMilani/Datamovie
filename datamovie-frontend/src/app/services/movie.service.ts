@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/enviroment.development';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Movie} from '../interfaces/movie.interface';
+import {Category, Movie, Streaming} from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,13 @@ export class MovieService {
 
   deleteMovie(id:number): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/datamovie/movie/${id}`);
+  }
+
+  getAllCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/datamovie/category`);
+  }
+
+  getAllStreamings(): Observable<Streaming[]> {
+    return this.http.get<Streaming[]>(`${this.apiUrl}/datamovie/streaming`);
   }
 }

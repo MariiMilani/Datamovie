@@ -12,6 +12,7 @@ import {MovieService} from '../../../services/movie.service';
     Header,
     Card,
     RouterLink,
+
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -47,22 +48,27 @@ export class Home {
     });
   }
 
-  getApprovalRating(rating: number): number {
-    return Math.round(rating * 10);
+  getApprovalRating(rating: number | null): number {
+    if (rating != null) {
+      return Math.round(rating * 10);
+    }
+    return 0;
   }
 
-  getTop10(rating: number): boolean {
-    if (rating >= 8.5) {
-      return true;
+  getTop10(rating: number | null): boolean {
+    if (rating != null) {
+      if (rating >= 8.5) {
+        return true;
+      }
     }
     return false;
   }
 
-  getLogo(streamings: Streaming[]): string {
-    if (streamings.length > 0) {
-      if (streamings[0].name === "Netflix") {
+  getLogo(streaming: Streaming[]): string {
+    if (streaming.length > 0) {
+      if (streaming[0].name === "Netflix") {
         return 'images/streaming/netflix.png';
-      } else if (streamings[0].name == "apple") {
+      } else if (streaming[0].name == "apple") {
         return 'images/streaming/apple.png';
       }
     }

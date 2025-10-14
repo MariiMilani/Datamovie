@@ -8,61 +8,109 @@
       <div class="registration-box p-4">
         <h1 class="mb-4">Cadastre seu filme aqui</h1>
 
-        <form>
+        @if (errorMessage) {
+          <div class="alert alert-danger"> {{ errorMessage }}</div>
+        }
+
+        @if (successMessage) {
+          <div class="alert alert-success"> {{ successMessage }}</div>
+        }
+
+
+
+        <form (ngSubmit)="onSubmit()" #movieForm="ngForm">
           <div class="form-container">
             <div class="form-item">
               <input type="text"
+                     id="title"
                      class="form-control custom-input"
-                     placeholder="Nome do filme"
-              ></div>
+                     placeholder="Film title"
+                     name="title"
+                     [(ngModel)]="movie.title"
+                     required
+                     #title="ngModel">
+              @if (title.invalid && (title.dirty || title.touched)) {
+                <div class="text-danger">Title is required</div>
+              }
+            </div>
 
             <div class="form-item">
               <input type="text"
+                     id="description"
                      class="form-control custom-input"
-                     placeholder="Descrição do filme"
-              ></div>
+                     placeholder="Description"
+                     name="description"
+                     [(ngModel)]="movie.description"
+                     required
+                     #description="ngModel">
+              @if (description.invalid && (description.dirty || description.touched)) {
+                <div class="text-danger">Description is required</div>
+              }</div>
 
             <div class="form-item">
               <input type="date"
+                     id="releaseDate"
                      class="form-select custom-input"
-                     placeholder="Data de lançamento"
-              ></div>
+                     placeholder="Release date"
+                     name="releaseDate"
+                     [(ngModel)]="movie.releaseDate"
+                     required
+                     #releaseDate="ngModel">
+              @if (releaseDate.invalid && (releaseDate.dirty || releaseDate.touched)) {
+                <div class="text-danger">Release date is required</div>
+              }
+            </div>
 
             <div class="form-item">
               <input type="number"
+                     id="rating"
                      class="form-control custom-input"
-                     placeholder="Avaliação geral"
-              ></div>
+                     placeholder="Rating"
+                     name="rating"
+                     [(ngModel)]="movie.rating"
+                     required
+                     #rating="ngModel">
+              @if (rating.invalid && (rating.dirty || rating.touched)) {
+                <div class="text-danger">Rating must be between 0 and 10</div>
+              }
+            </div>
 
             <div class="form-item select-test">
-              <select class="form-select custom-input" aria-label="Default select example">
-                <option class="selected" selected>Aonde está disponível?</option>
-                <option value="netflix">Netflix</option>
-                <option value="prime-video">Prime Video</option>
-                <option value="apple">Apple TV</option>
+              <select class="form-select custom-input"
+                      id="category"
+                      name="category"
+                      [(ngModel)]="selectedCategoryId"
+                      required>
+                <option [ngValue]="0" disabled class="selected" selected>Wich category?</option>
+                @for (category of availableCategories; track category.id) {
+                  <option [value]="category.id"> {{ category.name }}</option>
+                }
               </select>
             </div>
 
             <div class="form-item">
-              <select class="form-select custom-input" aria-label="Default select example">
-                <option class="selected" selected>Qual categoria</option>
-                <option value="drama">Drama</option>
-                <option value="terror">Terror</option>
-                <option value="Romance">Romance</option>
-                <option value="action">Ação</option>
+              <select class="form-select custom-input"
+                      id="streaming"
+                      name="streaming"
+                      [(ngModel)]="selectedStreamingId"
+                      required>
+                <option [ngValue]="0" disabled class="selected" selected>Where is available?</option>
+                @for (streaming of availableStreamings; track streaming.id) {
+                  <option [value]="streaming.id"> {{ streaming.name }}</option>
+                }
               </select>
             </div>
 
             <div class="form-submit">
-              <button type="submit" class="btn btn-danger w-100 custom-button mb-3">
-                Cadastrar filme
+              <button type="submit" class="btn btn-danger w-100 custom-button mb-3" [disabled]="movieForm.invalid">
+                Create new movie
               </button>
             </div>
           </div>
         </form>
       </div>
 
-      <a [routerLink]="'/'" class="text-white text-decoration-none ms-2">Voltar</a>
+      <a [routerLink]="'/'" class="text-white text-decoration-none ms-2">Back</a>
     </div>
   </div>
 </div>
