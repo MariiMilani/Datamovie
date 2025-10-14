@@ -55,7 +55,7 @@ public class MovieMapper {
                 .releaseDate(movie.getReleaseDate())
                 .rating(movie.getRating())
                 .categories(categories)
-                .streamings(streamings)
+                .streaming(streamings)
                 .build();
     }
 

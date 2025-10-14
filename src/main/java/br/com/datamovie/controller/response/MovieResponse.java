@@ -12,5 +12,5 @@ public record MovieResponse (Long id,
                              LocalDate releaseDate,
                              double rating,
                              List<CategoryResponse> categories,
-                             List<StreamingResponse> streamings) {
+                             List<StreamingResponse> streaming) {
 }
